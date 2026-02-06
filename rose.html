@@ -14,9 +14,12 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      overflow: hidden;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
     .card {
+      margin-top: 140px;
+      z-index: 1;
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       padding: 40px;
@@ -52,10 +55,11 @@
       display: none;
     }
     .quote {
+      z-index: 2;
       position: absolute;
       top: 60px;
       text-align: center;
-      font-size: 2.3rem;
+      font-size: 1.3rem;
       font-style: italic;
       color: rgba(255, 255, 255, 0.9);
       max-width: 90%;
@@ -123,5 +127,3 @@
 </script>
 </body>
 </html>
-
-
