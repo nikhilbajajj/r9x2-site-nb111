@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Sharu ❤️</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+    button {
+      background: #fff;
+      color: #ff4d6d;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .hidden {
+      display: none;
+    }
+    .quote {
+      position: absolute;
+      top: 60px;
+      text-align: center;
+      font-size: 2.3rem;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 90%;
+      line-height: 1.6;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(100vh) scale(1); opacity: 1; }
+      to { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="quote">
+  “They can take you away from me,<br />
+  but never my love for you.”
+  </div>
+  <audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+  <div class="card">
+    <p id="secret" class="hidden">
+      Happy Rose Day, meri mithi rasmalai sharu mithi mithi gud jesi 🌹<br />
+      You make my days brighter, my laughs louder, and my heart calmer.
+      I’m really lucky to have you 💕
+    </p>
+    <button id="roseButton" onclick="showerRoses()" class="hidden">Click to get your roses💌</button>
+  </div>
+
+  <script>
+     window.onload = () => {
+    showLove();
+  };
+  let roseInterval = null;
+  function showLove() {
+    document.getElementById('secret').classList.remove('hidden');
+    document.getElementById('roseButton').classList.remove('hidden');
+  }
+
+  function showerRoses() {
+     if (roseInterval !== null) return;
+     roseInterval = setInterval(createHearts, 800);
+    const music = document.getElementById('bgMusic');
+    music.play();
+  }
+
+  function createHearts() {
+    for (let i = 0; i < 60; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '🌹';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+  }
+</script>
+</body>
+</html>
