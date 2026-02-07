@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propose Day 💍</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      width: 90%;
+      max-width: 420px;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: pop 0.6s ease;
+    }
+
+    h1 {
+      color: #e63946;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .yes:hover {
+      transform: scale(1.1);
+    }
+
+    .no {
+      background: #ddd;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .heart {
+      position: fixed;
+      color: red;
+      font-size: 20px;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="step1">
+    <h1>Hey Chalu 😏</h1>
+    <p>
+      I was going to write a serious proposal…<br>
+      But then I remembered who I am 🤡
+    </p>
+    <button class="yes" onclick="nextStep()">Continue 👉</button>
+  </div>
+
+  <div class="card hidden" id="step2">
+    <h1>Important Question 🚨</h1>
+    <p>
+      You’ve already wasted <b>2 years</b> of your life with me.<br>
+      Want to waste the rest too?
+    </p>
+    <button class="yes" id="yesBtn" onclick="finalStep()">YES 😍</button>
+  </div>
+
+  <div class="card hidden" id="step3">
+    <h1>Happy Propose Day 💍❤️</h1>
+    <p>
+      Will you be my forever?<br><br>
+      I promise:
+      <br>✔ bad jokes
+      <br>✔ making love daily
+      <br>✔ 2 trips in a year
+      <br>✔ Qutab minar visit on 1st May every year
+      <br>✔ eating your delicious hand-made food (Salty, sweet, bitter, garlic, no garlic, tomato, no tomato)
+      <br>✔ 2 babies for you 
+    </p>
+    <h2>💖 I Love You 123💖</h2>
+    <audio id="bgMusic" loop>
+  <source src="Audio/propose.mp3" type="audio/mpeg">
+</audio>
+  </div>
+
+  <script>
+    function nextStep() {
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }
+
+    function finalStep() {
+      document.getElementById("step2").classList.add("hidden");
+      document.getElementById("step3").classList.remove("hidden");
+      const music = document.getElementById('bgMusic');
+      music.play();
+      startHearts();
+    }
+
+    // Floating hearts
+    function startHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }, 300);
+    }
+     let yesCanMove = true;
+
+  const yesBtn = document.getElementById("yesBtn");
+
+  // YES button runs away for 10 seconds
+  yesBtn.addEventListener("mouseover", () => {
+    if (!yesCanMove) return;
+
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+
+    yesBtn.style.position = "absolute";
+    yesBtn.style.left = x + "px";
+    yesBtn.style.top = y + "px";
+  });
+
+  // Stop the madness after 10 seconds 😇
+  setTimeout(() => {
+    yesCanMove = false;
+    yesBtn.style.position = "static";
+  }, 10000);
+  </script>
+
+</body>
+</html>
